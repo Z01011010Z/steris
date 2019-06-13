@@ -1,0 +1,29 @@
+{
+  "name": "steris",
+  "version": "1.0.0",
+  "description": "Terminal UI Planner",
+  "main": "main.js",
+  "scripts": {
+    "test": "steris-test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Z01011010Z/steris.git"
+  },
+  "keywords": [
+    "planner"
+  ],
+  "author": "Z01011010Z",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Z01011010Z/steris/issues"
+  },
+  "homepage": "https://github.com/Z01011010Z/steris#readme",
+  "dependencies": {
+    "blessed": "^0.1.81",
+    "blessed-contrib": "^4.8.16",
+    "lowdb": "^1.0.0",
+    "moment": "^2.24.0",
+    "neo-blessed": "^0.2.0"
+  }
+}
