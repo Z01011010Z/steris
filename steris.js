@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const blessed = require('blessed');
 const contrib = require('blessed-contrib');
 const moment = require('moment');
@@ -28,7 +30,7 @@ let screen = blessed.screen({
     sendFocus: true,
 });
 
-const daily = require('./lib/daily.js')(screen);
+const monthly = require('./lib/monthly.js')(screen);
 
 let topbar = blessed.box({
     parent: screen,
@@ -46,6 +48,7 @@ let menu = blessed.Listbar({
     mouse: true,
     keys: true,
     vi: true,
+    autoCommandKeys: true,
     align: "center",
     valign: "middle",
     name: 'text',
@@ -78,8 +81,12 @@ let menu = blessed.Listbar({
     },
     items: {
         'Daily': () => {
+            monthly.daily.show();
+            monthly.hide();
         },
         'Monthly': () => {
+            monthly.show();
+            monthly.daily.hide();
         },
     },
 });
@@ -110,6 +117,13 @@ let date = blessed.text({
         height: 3,
     },
 });
+
+// Init all
+monthly.daily.updateDay(moment());
+monthly.updateMonth(moment());
+
+monthly.daily.show();
+monthly.hide();
 
 screen.key('q', function() {
     process.exit(0);
